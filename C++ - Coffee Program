@@ -1,0 +1,204 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+//declared constants
+double const smallCoffee = 1.75;
+double const mediumCoffee = 1.90;
+double const largeCoffee = 2.00;
+
+
+//function prototypes
+void initialize (int& numberSmallCups, int& numberMediumCups, int& numberLargeCups,
+                 double& totalSmallCups, double& totalMediumCups, double& totalLargeCups,
+                 double& cumulativeSmallCups, double& cumulativeMediumCups, double& cumulativeLargeCups);
+void showChoices();
+void buyCoffee(int& numberSmallCups, double& totalSmallCups, int& numberMediumCups,
+               double& totalMediumCups, int& numberLargeCups, double& totalLargeCups);
+void cupsSold(int& numberSmallCups, int& numberMediumCups, int& numberLargeCups);
+void coffeeSold();
+void totalAmount(double& totalSmallCups, double& totalMediumCups, double& totalLargeCups);
+void printCupsSold(int& numberSmallCups, int& numberMediumCups, int& numberLargeCups);
+//Main
+
+int main()
+{
+//declared variables
+ int numberSmallCups;
+ int numberMediumCups;
+ int numberLargeCups;
+ double totalSmallCups;
+ double totalMediumCups;
+ double totalLargeCups;
+ double cumulativeSmallCups;
+ double cumulativeMediumCups;
+ double cumulativeLargeCups;
+ int choice;
+
+//initialize
+initialize(numberSmallCups, numberMediumCups, numberLargeCups,
+           totalSmallCups, totalMediumCups, totalLargeCups,
+           cumulativeSmallCups, cumulativeMediumCups, cumulativeLargeCups);
+
+//showChoices switch
+    do
+    {
+        showChoices();
+        cin >> choice;
+        cout << endl;
+
+        switch (choice)
+        {
+        case 1:
+            cout <<"You selected to buy coffee."<< endl;
+            initialize(numberSmallCups, numberMediumCups, numberLargeCups,
+                       totalSmallCups, totalMediumCups, totalLargeCups,
+                       cumulativeSmallCups, cumulativeMediumCups, cumulativeLargeCups);
+            buyCoffee(numberSmallCups, totalSmallCups, numberMediumCups,
+                      totalMediumCups, numberLargeCups, totalLargeCups);
+            break;
+        case 2:
+            cout << "The total amount of cups sold by size is:  "<<endl;
+            cupsSold(cumulativeSmallCups, cumulativeMediumCups, cumulativeLargeCups);
+            break;
+        case 3:
+            cout << "function for lifetime coffee sold";
+            break;
+        case 4:
+            cout << "The total money made for Coffee Sales is:  ";
+            totalAmount(totalSmallCups, totalMediumCups, totalLargeCups);
+            break;
+        case 0:
+            break;
+        default:
+            cout << "Invalid input." << endl;
+        }
+    }
+    while (choice != 0);
+
+
+cout<< " Thank you for using this program.  Have a nice day."<<endl;
+    return 0;
+}   //end Main
+
+void showChoices()
+{
+    cout << "Enter--" << endl;
+    cout<< endl;
+    cout << "1: Buy Coffee " << endl;
+    cout << "2: Shows the total cups sold by size "<< endl;
+    cout << "3: Shows the total amount of coffee sold"<<endl;
+    cout << "4: Shows the total amount of money made"<< endl;
+    cout << "0: To quit the program." << endl;
+}// end showChoices
+
+
+void initialize (int& numberSmallCups, int& numberMediumCups, int& numberLargeCups,
+                 double& totalSmallCups, double& totalMediumCups, double& totalLargeCups,
+                 double& cumulativeSmallCups, double& cumulativeMediumCups, double& cumulativeLargeCups){
+ numberSmallCups = 0;
+ numberMediumCups = 0;
+ numberLargeCups = 0;
+ totalSmallCups = 0;
+ totalMediumCups = 0;
+ totalLargeCups = 0;
+ } //end initialize
+
+
+
+ void buyCoffee(int& numberSmallCups, double& totalSmallCups, int& numberMediumCups,
+                double& totalMediumCups, int& numberLargeCups, double& totalLargeCups){
+
+    char coffeeSize;
+    char coffeeOrder;
+
+               cout <<"Would you like some coffee? (y for yes, n for no)"<<endl;
+               cin>>coffeeOrder;
+
+    while(true){
+        if (coffeeOrder == 'y' || coffeeOrder == 'Y'){
+
+
+        cout<<"What size coffee would you like? [S, M, L]";
+        cout<<"S: Small Coffee (9 oz)";
+        cout<<"M: Medium Coffee (12 oz)";
+        cout<<"L: Large Coffee (15 oz)";
+        cin>> coffeeSize;
+
+
+            if (coffeeSize == 's' || coffeeSize == 'S'){
+            cout<<"How many?";
+            cin>>numberSmallCups;
+            totalSmallCups = numberSmallCups * smallCoffee;
+            cout<<"Small Coffee: "<<numberSmallCups<<" "<<totalSmallCups<<endl;
+            cout<<"Would you like to add another coffee?"<<endl;
+            cin>> coffeeOrder;
+            }
+        else
+          if (coffeeSize == 'm' || coffeeSize == 'M'){
+                cout<<"How many?";
+                cin>>numberMediumCups;
+                totalMediumCups = numberMediumCups * mediumCoffee;
+                cout<<"Medium Coffee: "<<numberMediumCups<<" "<<totalMediumCups<<endl;
+                cout<<"Would you like to add another coffee?"<<endl;
+                cin>> coffeeOrder;
+                }
+        else
+         if (coffeeSize == 'l' || coffeeSize == 'L'){
+                cout<<"How many?";
+                cin>>numberLargeCups;
+                totalLargeCups = numberLargeCups * largeCoffee;
+                cout<<"Large Coffee: "<<numberLargeCups<<" "<<totalLargeCups<<endl;
+                cout<<"Would you like to add another coffee?"<<endl;
+                cin>> coffeeOrder;}
+                }
+        else
+              break;
+
+}//end While
+
+    cout<<"you ordered: "<<endl;
+    cout<< endl;
+    if (numberSmallCups>= 1) cout << "Small Coffee: " << numberSmallCups
+        << " " << "@" << " " << smallCoffee << " " << "$" << totalSmallCups << endl;
+    if (numberMediumCups>=1) cout << "Medium Coffee: " << numberMediumCups
+        << " " << "@" << " " << mediumCoffee << " " << " $" << totalMediumCups << endl;
+    if (numberLargeCups>=1) cout << "Large Coffee: " << numberLargeCups
+        << "@" << " " << largeCoffee << " " << " $" << totalLargeCups << endl;
+    cout << endl;
+    cout << "Amount Due: $" << (totalSmallCups + totalMediumCups + totalLargeCups)<<endl;
+
+
+
+ }//end BuyCoffee
+
+
+ void cupsSold(int& numberSmallCups, int& numberMediumCups, int& numberLargeCups,
+               double& cumulativeSmallCups, double& cumulativeMediumCups, double& cumulativeLargeCups){
+
+     cumulativeSmallCups = cumulativeSmallCups + numberSmallCups;
+     cumulativeMediumCups = cumulativeMediumCups + numberMediumCups;
+     cumulativeLargeCups = cumulativeLargeCups + numberLargeCups;
+
+}//end cupsSold
+
+void printCupsSold (double& cumulativeSmallCups, double& cumulativeMediumCups, double& cumulativeLargeCups){
+
+     cout << "Total Small cups: " << cumulativeSmallCups << endl;
+     cout << "Total Medium Cups:" << cumulativeMediumCups << endl;
+     cout << "Total Large Cups:" << cumulativeLargeCups << endl;
+}
+void totalAmount(double& totalSmallCups, double& totalMediumCups, double& totalLargeCups){
+    static double cumulativeSmallAmount=0;
+    static double cumulativeMediumAmount = 0;
+    static double cumulativeLargeAmount = 0;
+    static double grossProfit = 0;
+
+    cumulativeSmallAmount = cumulativeSmallAmount + totalSmallCups;
+    cumulativeMediumAmount = cumulativeMediumAmount + totalMediumCups;
+    cumulativeLargeAmount = cumulativeLargeAmount + totalLargeCups;
+    grossProfit = cumulativeSmallAmount + cumulativeMediumAmount + cumulativeLargeAmount;
+
+    cout<<"Total: " << "$" << grossProfit << endl;
+}//end totalAmount
