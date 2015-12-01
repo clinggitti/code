@@ -1,0 +1,96 @@
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+char pause;
+
+double vowels (string myString)
+{
+
+double vowelCount;
+int count;
+int strLength = myString.length();
+
+vowelCount = 0;
+count = 0;
+
+while (count < strLength)
+{
+	if (myString[count] == 'A')
+	{
+		vowelCount = vowelCount + 1;
+		count = count + 1;
+	}
+	else
+		if 	(myString[count] == 'E')
+		{
+			vowelCount = vowelCount + 1;
+			count = count + 1;
+		}
+		else
+			if	(myString[count] == 'I')
+			{
+				vowelCount = vowelCount + 1;
+				count = count + 1;
+			}
+			else
+				if (myString[count] == 'O')
+				{
+					vowelCount = vowelCount + 1;
+					count = count + 1;
+				}
+				else
+					if 	(myString[count] == 'U')
+					{
+						vowelCount = vowelCount + 1;
+						count = count + 1;
+					}
+					else
+						if 	(myString[count] == 'a')
+						{
+							vowelCount = vowelCount + 1;
+							count = count + 1;
+						}
+						else
+							if 	(myString[count] == 'e')
+							{
+								vowelCount = vowelCount + 1;
+								count = count + 1;
+							}
+							else
+								if 	(myString[count] == 'i')
+								{
+									vowelCount = vowelCount + 1;
+									count = count + 1;
+								}
+								else
+									if 	(myString[count] == 'o')
+									{
+										vowelCount = vowelCount + 1;
+										count = count + 1;
+									}
+									else
+										if 	(myString[count] == 'u')
+										{
+											vowelCount = vowelCount + 1;
+											count = count + 1;
+										}
+										else
+											count = count + 1;
+}
+return vowelCount;
+}
+
+int main()
+{
+double vowelTotal;
+vowelTotal = vowels ("This is a test.");
+cout << "Vowel Count: " << vowelTotal << endl;
+
+cout << "Press any key to continue..." << endl;
+cin >> pause;
+return 0;
+}
+
