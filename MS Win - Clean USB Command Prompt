@@ -1,0 +1,38 @@
+How to Clean a USB with Windows Diskpart thru Command Prompt 
+
+Windows Key + R
+// opens Run
+
+Type cmd
+// should pop up Command Prompt
+
+Right Click Command Prompt
+
+Run As Administrator
+
+Type diskpart
+// starts disk partition utility
+
+Type list disk
+// shows available disk partitions on HDD
+
+Type select disk # (with # replaced with desired disk partition)
+// selects desired disk partition to work with - be very cautious in selecting the right one
+
+Type clean
+// cleans selected partition
+
+Type create partition primary
+// creates primary partition on newly cleaned USB
+
+Type format fs fat32
+// formats new partition to FAT32 file system
+
+Type active
+// marks the new partition as active and assigns it a drive letter
+
+Type exit
+// closes disk partition program
+
+Type exit
+// closes command prompt
